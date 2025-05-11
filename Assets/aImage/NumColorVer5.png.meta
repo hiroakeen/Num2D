@@ -1,34 +1,34 @@
 fileFormatVersion: 2
-guid: 236539110da711146a6b0820ed39ef46
+guid: efe04d9023b00a34f829a275d5b8055e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4288035918044431015
-    second: Number_0
+      213: 3099351711348611816
+    second: NumColorVer5_0
   - first:
-      213: 7274922264133251463
-    second: Number_1
+      213: 2061711548673138967
+    second: NumColorVer5_1
   - first:
-      213: 6444854464500186218
-    second: Number_2
+      213: -2892136117716050319
+    second: NumColorVer5_2
   - first:
-      213: 8484659330433545107
-    second: Number_3
+      213: 4468701588599661968
+    second: NumColorVer5_3
   - first:
-      213: 2864006405870961871
-    second: Number_4
+      213: 4446531460367556688
+    second: NumColorVer5_4
   - first:
-      213: -2271461585372330998
-    second: Number_5
+      213: 5724918249007163505
+    second: NumColorVer5_5
   - first:
-      213: 4684166370730997568
-    second: Number_6
+      213: 2287699519196895874
+    second: NumColorVer5_6
   - first:
-      213: 7376203231445842152
-    second: Number_7
+      213: 2512045329789290157
+    second: NumColorVer5_7
   - first:
-      213: 249788494600628417
-    second: Number_8
+      213: -3562995432481295719
+    second: NumColorVer5_8
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -137,199 +137,199 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Number_0
+      name: NumColorVer5_0
       rect:
         serializedVersion: 2
-        x: 102
-        y: 695
-        width: 195
-        height: 282
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 95d78d03d06dd74c0800000000000000
-      internalID: -4288035918044431015
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Number_1
-      rect:
-        serializedVersion: 2
-        x: 391
-        y: 688
-        width: 227
-        height: 331
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 7813e3a4147b5f460800000000000000
-      internalID: 7274922264133251463
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Number_2
-      rect:
-        serializedVersion: 2
-        x: 683
-        y: 672
-        width: 283
-        height: 305
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: a6cbf993df8b07950800000000000000
-      internalID: 6444854464500186218
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Number_3
-      rect:
-        serializedVersion: 2
-        x: 62
-        y: 383
-        width: 243
-        height: 274
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 393f1b615b09fb570800000000000000
-      internalID: 8484659330433545107
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Number_4
-      rect:
-        serializedVersion: 2
-        x: 363
-        y: 382
-        width: 275
-        height: 275
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: fc4c168e6aefeb720800000000000000
-      internalID: 2864006405870961871
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Number_5
-      rect:
-        serializedVersion: 2
-        x: 703
-        y: 381
+        x: 31
+        y: 1046
         width: 319
-        height: 276
+        height: 320
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a04cfea09b52a70e0800000000000000
-      internalID: -2271461585372330998
+      spriteID: 8eadeecd5fb130b20800000000000000
+      internalID: 3099351711348611816
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Number_6
+      name: NumColorVer5_1
       rect:
         serializedVersion: 2
-        x: 79
-        y: 71
-        width: 231
-        height: 274
+        x: 346
+        y: 1046
+        width: 318
+        height: 319
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 04770441f70810140800000000000000
-      internalID: 4684166370730997568
+      spriteID: 711abf7eabbac9c10800000000000000
+      internalID: 2061711548673138967
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Number_7
+      name: NumColorVer5_2
       rect:
         serializedVersion: 2
-        x: 383
-        y: 71
-        width: 245
-        height: 282
+        x: 672
+        y: 1046
+        width: 340
+        height: 321
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8e8fa6912c98d5660800000000000000
-      internalID: 7376203231445842152
+      spriteID: 17e157d26811dd7d0800000000000000
+      internalID: -2892136117716050319
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Number_8
+      name: NumColorVer5_3
       rect:
         serializedVersion: 2
-        x: 683
-        y: 67
-        width: 331
-        height: 283
+        x: 40
+        y: 714
+        width: 311
+        height: 311
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1c866a9ff4d677300800000000000000
-      internalID: 249788494600628417
+      spriteID: 095e4bb2b64040e30800000000000000
+      internalID: 4468701588599661968
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NumColorVer5_4
+      rect:
+        serializedVersion: 2
+        x: 359
+        y: 714
+        width: 306
+        height: 312
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 050aec1fdc045bd30800000000000000
+      internalID: 4446531460367556688
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NumColorVer5_5
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 713
+        width: 309
+        height: 312
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1782938c0def27f40800000000000000
+      internalID: 5724918249007163505
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NumColorVer5_6
+      rect:
+        serializedVersion: 2
+        x: 348
+        y: 377
+        width: 317
+        height: 311
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 28a109a879a8fbf10800000000000000
+      internalID: 2287699519196895874
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NumColorVer5_7
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 377
+        width: 309
+        height: 311
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: da605c50be39cd220800000000000000
+      internalID: 2512045329789290157
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NumColorVer5_8
+      rect:
+        serializedVersion: 2
+        x: 674
+        y: 378
+        width: 309
+        height: 310
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 992fc9e1882bd8ec0800000000000000
+      internalID: -3562995432481295719
       vertices: []
       indices: 
       edges: []
@@ -338,7 +338,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 288334f8ca428b548aef3150d57f55a3
     internalID: 0
     vertices: []
     indices: 
@@ -347,7 +347,16 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      NumColorVer5_0: 3099351711348611816
+      NumColorVer5_1: 2061711548673138967
+      NumColorVer5_2: -2892136117716050319
+      NumColorVer5_3: 4468701588599661968
+      NumColorVer5_4: 4446531460367556688
+      NumColorVer5_5: 5724918249007163505
+      NumColorVer5_6: 2287699519196895874
+      NumColorVer5_7: 2512045329789290157
+      NumColorVer5_8: -3562995432481295719
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

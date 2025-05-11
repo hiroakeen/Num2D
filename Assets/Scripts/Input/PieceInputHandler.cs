@@ -55,8 +55,15 @@ public class PieceInputHandler : MonoBehaviour
 
     bool IsAdjacent(Piece a, Piece b)
     {
-        return Vector2.Distance(a.transform.position, b.transform.position) <= 1.1f;
+        float aSize = a.GetColliderRadius() * a.transform.localScale.x;
+        float bSize = b.GetColliderRadius() * b.transform.localScale.x;
+
+        float threshold = (aSize + bSize) * 1.2f; // © ­‚µ‘å‚«‚ß‚Ì—]—Ti20%‘‚µj
+        return Vector2.Distance(a.transform.position, b.transform.position) <= threshold;
     }
+
+
+
 
     void ClearSelection()
     {

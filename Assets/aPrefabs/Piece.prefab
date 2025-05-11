@@ -130,7 +130,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 1.3
+  m_Radius: 1.5
 --- !u!114 &360539295881789807
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -148,15 +148,15 @@ MonoBehaviour:
   textDisplay: {fileID: 888661151116256398}
   spriteRenderer: {fileID: 2077811710832029939}
   numberSprites:
-  - {fileID: -4288035918044431015, guid: 236539110da711146a6b0820ed39ef46, type: 3}
-  - {fileID: 7274922264133251463, guid: 236539110da711146a6b0820ed39ef46, type: 3}
-  - {fileID: 6444854464500186218, guid: 236539110da711146a6b0820ed39ef46, type: 3}
-  - {fileID: 8484659330433545107, guid: 236539110da711146a6b0820ed39ef46, type: 3}
-  - {fileID: 2864006405870961871, guid: 236539110da711146a6b0820ed39ef46, type: 3}
-  - {fileID: -2271461585372330998, guid: 236539110da711146a6b0820ed39ef46, type: 3}
-  - {fileID: 4684166370730997568, guid: 236539110da711146a6b0820ed39ef46, type: 3}
-  - {fileID: 7376203231445842152, guid: 236539110da711146a6b0820ed39ef46, type: 3}
-  - {fileID: 249788494600628417, guid: 236539110da711146a6b0820ed39ef46, type: 3}
+  - {fileID: 3099351711348611816, guid: efe04d9023b00a34f829a275d5b8055e, type: 3}
+  - {fileID: 2061711548673138967, guid: efe04d9023b00a34f829a275d5b8055e, type: 3}
+  - {fileID: -2892136117716050319, guid: efe04d9023b00a34f829a275d5b8055e, type: 3}
+  - {fileID: 4468701588599661968, guid: efe04d9023b00a34f829a275d5b8055e, type: 3}
+  - {fileID: 4446531460367556688, guid: efe04d9023b00a34f829a275d5b8055e, type: 3}
+  - {fileID: 5724918249007163505, guid: efe04d9023b00a34f829a275d5b8055e, type: 3}
+  - {fileID: 2287699519196895874, guid: efe04d9023b00a34f829a275d5b8055e, type: 3}
+  - {fileID: 2512045329789290157, guid: efe04d9023b00a34f829a275d5b8055e, type: 3}
+  - {fileID: -3562995432481295719, guid: efe04d9023b00a34f829a275d5b8055e, type: 3}
 --- !u!50 &3341630885533704959
 Rigidbody2D:
   serializedVersion: 5
@@ -351,9 +351,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '
-
-'
+  m_text: 1
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

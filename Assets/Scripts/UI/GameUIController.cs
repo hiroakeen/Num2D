@@ -11,12 +11,12 @@ public class GameUIController : MonoBehaviour
 
     public void UpdateTarget(int target)
     {
-        targetText.text = $"Target: {target}";
+        targetText.text = $"{target}";
     }
 
     public void UpdateCurrentSum(int sum)
     {
-        currentSumText.text = $"Sum: {sum}";
+        currentSumText.text = $"いま: {sum}";
     }
 
     public void ClearCurrentSum()

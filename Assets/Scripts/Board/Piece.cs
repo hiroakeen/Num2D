@@ -71,4 +71,11 @@ public class Piece : MonoBehaviour
             // ¡Œã‚±‚±‚Å’…’n‰‰o or SE ‚à‰Â”\
         }
     }
+
+    public float GetColliderRadius()
+    {
+        CircleCollider2D collider = GetComponent<CircleCollider2D>();
+        return collider != null ? collider.radius : 0.5f; // fallback
+    }
+
 }
