@@ -1,10 +1,9 @@
 ﻿using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine.InputSystem.XR;
 
 /// <summary>
-/// ピースの合計値チェック、消去、連鎖再評価を担当
+/// なぞり選択されたピースを評価し、合計がターゲットと一致すれば処理する
+/// スコア加算とターゲット更新にも対応
 /// </summary>
 public class SelectionEvaluator : MonoBehaviour
 {
@@ -21,41 +20,22 @@ public class SelectionEvaluator : MonoBehaviour
             sum += piece.Number;
         }
 
-        Debug.Log($"Evaluating: {sum} vs {targetProvider.TargetNumber}");
-
         if (sum == targetProvider.TargetNumber)
         {
-            Debug.Log("✅ 一致 → ピース削除 & 再評価へ");
-
+            // 成功：ピース消去、スコア加算、ターゲット更新
             foreach (var piece in selectedPieces)
             {
                 piece.AnimateDestroy();
             }
 
-            targetProvider.GenerateNewTarget();
-
-            StartCoroutine(DelayedReevaluate());
+            GameManager.Instance?.AddScore(1);
+            targetProvider.GenerateNewTarget(GameManager.Instance.Score);
         }
         else
         {
-            Debug.Log("❌ 不一致 → 何も起きない");
+            Debug.Log("❌ 合計が一致しません");
         }
 
-        uiController.UpdateTarget(targetProvider.TargetNumber);
+        uiController?.ClearCurrentSum();
     }
-
-    IEnumerator DelayedReevaluate()
-    {
-        yield return new WaitForSeconds(0.4f); // アニメ完了待ち
-        TryAutoChain(); // 連鎖再評価（単純版）
-    }
-
-    void TryAutoChain()
-    {
-        // 現在の接地済みピースから、なぞらずに自動検出 or スキップ
-        Debug.Log("🔁 連鎖チェック（未実装：自由にカスタム可能）");
-        // → 将来的に自動選択による連鎖などを導入してもOK
-    }
-
-
 }
