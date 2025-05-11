@@ -2,13 +2,13 @@ using UnityEngine;
 using System.Collections.Generic;
 
 /// <summary>
-/// マウスでピースをなぞって合計を判定
+/// 自由配置ピースのなぞり操作。接地済みのみ対象。
 /// </summary>
 public class PieceInputHandler : MonoBehaviour
 {
     [SerializeField] private Camera mainCamera;
-    [SerializeField] private BoardManager boardManager;
     [SerializeField] private SelectionEvaluator evaluator;
+    [SerializeField] private GameUIController uiController;
 
     private List<Piece> selectedPieces = new List<Piece>();
     private bool isDragging = false;
@@ -41,7 +41,7 @@ public class PieceInputHandler : MonoBehaviour
         if (hit != null)
         {
             Piece piece = hit.GetComponent<Piece>();
-            if (piece != null && !selectedPieces.Contains(piece))
+            if (piece != null && piece.IsSettled && !selectedPieces.Contains(piece))
             {
                 if (selectedPieces.Count == 0 || IsAdjacent(selectedPieces[selectedPieces.Count - 1], piece))
                 {
@@ -50,13 +50,12 @@ public class PieceInputHandler : MonoBehaviour
                 }
             }
         }
+        uiController.UpdateCurrentSum(GetCurrentSum());
     }
 
     bool IsAdjacent(Piece a, Piece b)
     {
-        Vector2 posA = a.transform.position;
-        Vector2 posB = b.transform.position;
-        return Vector2.Distance(posA, posB) <= 1.1f;
+        return Vector2.Distance(a.transform.position, b.transform.position) <= 1.1f;
     }
 
     void ClearSelection()
@@ -66,5 +65,14 @@ public class PieceInputHandler : MonoBehaviour
             piece.SetSelected(false);
         }
         selectedPieces.Clear();
+        uiController.ClearCurrentSum();
+    }
+
+    int GetCurrentSum()
+    {
+        int sum = 0;
+        foreach (var piece in selectedPieces)
+            sum += piece.Number;
+        return sum;
     }
 }
