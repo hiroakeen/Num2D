@@ -1222,9 +1222,9 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.39026228
+    x: 0
     y: 0
-    width: 0.21947543
+    width: 1
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
@@ -2370,7 +2370,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -159.99998, y: 363}
+  m_AnchoredPosition: {x: -160, y: 363}
   m_SizeDelta: {x: -320, y: -845}
   m_Pivot: {x: 0.5, y: 0.49999994}
 --- !u!114 &1682908505
@@ -3090,8 +3090,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -135, y: -410}
-  m_SizeDelta: {x: 270.01, y: 140}
+  m_AnchoredPosition: {x: -135, y: -300}
+  m_SizeDelta: {x: 270.01, y: 180}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2133338104
 MonoBehaviour:

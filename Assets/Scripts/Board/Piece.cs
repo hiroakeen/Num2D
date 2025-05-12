@@ -19,9 +19,11 @@ public class Piece : MonoBehaviour
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Sprite[] numberSprites;
 
+    private Vector3 originalScale;
     void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        originalScale = transform.localScale;
     }
 
     public void Init(int number)
@@ -75,5 +77,14 @@ public class Piece : MonoBehaviour
         CircleCollider2D collider = GetComponent<CircleCollider2D>();
         return collider != null ? collider.radius : 0.5f; // fallback
     }
+
+    public void AnimateSelect()
+    {
+        float enlargeFactor = 1.15f;
+        transform.DOKill(); // “r’†‚Å‘I‚Ñ’¼‚µ‚Ä‚à’†’f
+        transform.DOScale(originalScale * enlargeFactor, 0.08f)
+            .OnComplete(() => transform.DOScale(originalScale, 0.08f));
+    }
+
 
 }

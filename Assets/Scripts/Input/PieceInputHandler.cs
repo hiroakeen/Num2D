@@ -2,13 +2,14 @@ using UnityEngine;
 using System.Collections.Generic;
 
 /// <summary>
-/// 自由配置ピースのなぞり操作。接地済みのみ対象。
+/// なぞりによるピース選択とLineDrawerによる線表示
 /// </summary>
 public class PieceInputHandler : MonoBehaviour
 {
     [SerializeField] private Camera mainCamera;
     [SerializeField] private SelectionEvaluator evaluator;
     [SerializeField] private GameUIController uiController;
+    [SerializeField] private LineDrawer lineDrawer; // ← 追加
 
     private List<Piece> selectedPieces = new List<Piece>();
     private bool isDragging = false;
@@ -31,6 +32,9 @@ public class PieceInputHandler : MonoBehaviour
             evaluator.EvaluateSelection(selectedPieces);
             ClearSelection();
         }
+
+        // 線をリアルタイムに更新
+        lineDrawer?.UpdateLine(selectedPieces);
     }
 
     void TrySelectPieceAtMouse()
@@ -47,23 +51,20 @@ public class PieceInputHandler : MonoBehaviour
                 {
                     selectedPieces.Add(piece);
                     piece.SetSelected(true);
+                    piece.AnimateSelect();
+                    uiController?.UpdateCurrentSum(GetCurrentSum());
                 }
             }
         }
-        uiController.UpdateCurrentSum(GetCurrentSum());
     }
 
     bool IsAdjacent(Piece a, Piece b)
     {
         float aSize = a.GetColliderRadius() * a.transform.localScale.x;
         float bSize = b.GetColliderRadius() * b.transform.localScale.x;
-
-        float threshold = (aSize + bSize) * 1.2f; // ← 少し大きめの余裕（20%増し）
+        float threshold = (aSize + bSize) * 1.2f;
         return Vector2.Distance(a.transform.position, b.transform.position) <= threshold;
     }
-
-
-
 
     void ClearSelection()
     {
@@ -72,7 +73,8 @@ public class PieceInputHandler : MonoBehaviour
             piece.SetSelected(false);
         }
         selectedPieces.Clear();
-        uiController.ClearCurrentSum();
+        uiController?.ClearCurrentSum();
+        lineDrawer?.ClearLine(); // 線も消す
     }
 
     int GetCurrentSum()
