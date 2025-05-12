@@ -67,8 +67,6 @@ public class Piece : MonoBehaviour
         if (!IsSettled)
         {
             IsSettled = true;
-            // Debug.Log($"Piece {Number} settled.");
-            // ¡Œã‚±‚±‚Å’…’n‰‰o or SE ‚à‰Â”\
         }
     }
 

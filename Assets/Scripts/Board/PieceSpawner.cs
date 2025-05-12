@@ -9,7 +9,7 @@ public class PieceSpawner : MonoBehaviour
     [Header("Spawn Settings")]
     [SerializeField] private GameObject piecePrefab;
     [SerializeField] private float spawnInterval = 0.3f;
-    [SerializeField] private float spawnXRange = 2.5f;
+    [SerializeField] private float spawnXRange = 2.0f;
     [SerializeField] private Transform spawnHeightPoint; // Y位置指定オブジェクト
 
     [Header("補充制御")]

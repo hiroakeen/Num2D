@@ -6,7 +6,7 @@ using UnityEngine;
 public class AspectKeeper : MonoBehaviour
 {
     [SerializeField]
-    private Camera targetCamera; //対象とするカメラ
+    private Camera targetCamera;
 
     [SerializeField]
     private Vector2 aspectVec; //目的解像度
@@ -28,7 +28,7 @@ public class AspectKeeper : MonoBehaviour
         else
         {
             viewportRect.height = 1 / magRate; //使用する縦幅を変更
-            viewportRect.y = 0.5f - viewportRect.height * 0.5f;//中央余生
+            viewportRect.y = 0.5f - viewportRect.height * 0.5f;//中央寄せ
         }
 
         targetCamera.rect = viewportRect; //カメラのViewportに適用
