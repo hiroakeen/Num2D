@@ -1,13 +1,11 @@
 using UnityEngine;
-using TMPro;
 
 public class TitleSceneManager : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI highScoreText;
+    [SerializeField] private UIFader fader;
 
-    void Start()
+    public void StartGame()
     {
-        int topScore = PlayerPrefs.GetInt("HighScore_0", 0);
-        highScoreText.text = $"ç≈çÇãLò^ÅF{topScore} ñ‚";
+        fader.FadeOutAndLoadScene("MainScene", 1f);
     }
 }
