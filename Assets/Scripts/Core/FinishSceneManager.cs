@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
 using DG.Tweening;
@@ -7,57 +7,80 @@ using System.Collections;
 
 public class FinishSceneManager : MonoBehaviour
 {
-    [Header("UI—v‘f")]
+    [Header("UIè¦ç´ ")]
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private UIFader fader;
 
-    [Header("ƒ{ƒ^ƒ“")]
+    [Header("ãƒœã‚¿ãƒ³")]
     [SerializeField] private Button retryButton;
     [SerializeField] private Button titleButton;
 
-    [Header("ƒJƒEƒ“ƒgƒAƒbƒvİ’è")]
-    [SerializeField] private float countDelay = 0.05f; // ”š‚Ì‘‰ÁŠÔŠu
+    [Header("ã‚«ã‚¦ãƒ³ãƒˆã‚¢ãƒƒãƒ—è¨­å®š")]
+    [SerializeField] private float countDelay = 0.05f; // æ•°å­—ã®å¢—åŠ é–“éš”
 
     private int finalScore;
+    private int highScore;
+    [SerializeField] private TextMeshProUGUI highScoreText;
+    [SerializeField] private GameObject newRecordBanner; // "New Record!" è¡¨ç¤ºç”¨ï¼ˆImageã‚„Textï¼‰
+
+
 
     void Start()
     {
-        // ‰Šúİ’èFƒ{ƒ^ƒ“”ñ•\¦AƒXƒRƒA”ñ•\¦AƒtƒF[ƒhŠJn
+        // UIåˆæœŸåŒ–
         retryButton.gameObject.SetActive(false);
         titleButton.gameObject.SetActive(false);
         scoreText.text = "";
+        highScoreText.text = "";
+        newRecordBanner.SetActive(false);
+
+        // ãƒ•ã‚§ãƒ¼ãƒ‰ã‚¤ãƒ³
         fader.FadeIn(1f);
 
-        // ƒXƒRƒA“Ç‚İ‚İ
+        // ã‚¹ã‚³ã‚¢å–å¾—
         finalScore = PlayerPrefs.GetInt("LastScore", 0);
+        highScore = PlayerPrefs.GetInt("HighScore", 0);
+      
 
-        // ƒJƒEƒ“ƒgƒAƒbƒv‰‰oŠJn
+        // ãƒã‚¤ã‚¹ã‚³ã‚¢æ›´æ–°ãƒã‚§ãƒƒã‚¯
+        if (finalScore > highScore)
+        {
+            highScore = finalScore;
+            PlayerPrefs.SetInt("HighScore", highScore);
+            PlayerPrefs.Save();
+            newRecordBanner.SetActive(true); // â† New Recordè¡¨ç¤ºï¼
+        }
+
+        // è¡¨ç¤ºæ¼”å‡ºé–‹å§‹
         StartCoroutine(CountUpScore());
+        // ã‚¹ã‚³ã‚¢ç™»éŒ²
+        ScoreRanking.RegisterScore(finalScore);
     }
+
 
     private IEnumerator CountUpScore()
     {
         int current = 0;
-
-        yield return new WaitForSeconds(1f); // ‰‰o‘O‚ÌŠÔ
+        yield return new WaitForSeconds(1f);
 
         while (current <= finalScore)
         {
-            scoreText.text = $"³‰ğ”F{current} –â";
+            scoreText.text = $"æ­£è§£æ•°ï¼š{current} å•";
             current++;
             yield return new WaitForSeconds(countDelay);
         }
 
-        // ­‚µŠÔ‚ğ‚¨‚¢‚Äƒ{ƒ^ƒ“•\¦
+        // ãƒã‚¤ã‚¹ã‚³ã‚¢è¡¨ç¤º
+        highScoreText.text = $"æœ€é«˜è¨˜éŒ²ï¼š{highScore} å•";
+
         yield return new WaitForSeconds(0.5f);
 
         retryButton.gameObject.SetActive(true);
         titleButton.gameObject.SetActive(true);
-
-        // ƒ{ƒ^ƒ“‚ğƒtƒF[ƒh•\¦
         retryButton.transform.DOScale(1f, 0.4f).From(0f).SetEase(Ease.OutBack);
         titleButton.transform.DOScale(1f, 0.4f).From(0f).SetEase(Ease.OutBack);
     }
+
 
     public void OnRetry()
     {
