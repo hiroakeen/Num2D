@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using TMPro;
+using System.Collections;
 
 /// <summary>
 /// ゲーム全体の制限時間・スコアを管理するシングルトン
@@ -15,6 +16,9 @@ public class GameManager : MonoBehaviour
     [Header("スコア表示")]
     [SerializeField] private TextMeshProUGUI scoreText;
 
+    [SerializeField] private CountdownUI countdownUI;
+    [SerializeField] private PieceSpawner pieceSpawner;
+
     private float remainingTime;
     private int score;
     private bool isGameRunning = true;
@@ -27,12 +31,18 @@ public class GameManager : MonoBehaviour
         else Destroy(gameObject);
     }
 
-    private void Start()
+    private IEnumerator Start()
     {
+        yield return StartCoroutine(countdownUI.PlayCountdown());
+
+        // Countdown終了後に earlyRush を終了
+        pieceSpawner.SetEarlyRush(false);
+
+        // ゲーム本編開始（スコア・タイマー開始など）
         remainingTime = timeLimit;
         score = 0;
+        isGameRunning = true;
         UpdateScoreUI();
-        UpdateTimerUI();
     }
 
     private void Update()
@@ -51,6 +61,7 @@ public class GameManager : MonoBehaviour
         UpdateTimerUI();
     }
 
+  
     public void AddScore(int amount)
     {
         score += amount;

@@ -16,15 +16,18 @@ public class PieceSpawner : MonoBehaviour
     [SerializeField] private int maxSettledCount = 25;
 
     private float timer = 0f;
+    private bool isEarlyRush = true;
+
 
     void Update()
     {
         int settledCount = CountSettledPieces();
+        float currentSpawnInterval = isEarlyRush ? 0.05f : spawnInterval;
 
         if (settledCount < maxSettledCount)
         {
             timer += Time.deltaTime;
-            if (timer >= spawnInterval)
+            if (timer >= currentSpawnInterval)
             {
                 SpawnPiece();
                 timer = 0f;
@@ -35,6 +38,7 @@ public class PieceSpawner : MonoBehaviour
             timer = 0f;
         }
     }
+
 
     void SpawnPiece()
     {
@@ -57,5 +61,10 @@ public class PieceSpawner : MonoBehaviour
             if (piece.IsSettled) count++;
         }
         return count;
+    }
+
+    public void SetEarlyRush(bool value)
+    {
+        isEarlyRush = value;
     }
 }
