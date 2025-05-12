@@ -110,7 +110,7 @@ public class GameManager : MonoBehaviour
         pieceSpawner.enabled = false;
 
         // タイムアップ表示
-        uiController?.ShowGameOverText("Time Up!");
+        uiController?.ShowFinishImage();
 
         // 2秒後に結果シーンへ遷移
         StartCoroutine(GoToFinishSceneAfterDelay());

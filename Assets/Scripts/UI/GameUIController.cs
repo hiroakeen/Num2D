@@ -1,31 +1,39 @@
 ﻿using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 using DG.Tweening;
 
 /// <summary>
-/// UIの表示管理（ターゲット数と現在の合計）
+/// UIの表示管理（ターゲット数と現在の合計など）
 /// </summary>
 public class GameUIController : MonoBehaviour
 {
+    [Header("表示UI")]
     [SerializeField] private TextMeshProUGUI targetText;
     [SerializeField] private TextMeshProUGUI currentSumText;
     [SerializeField] private TextMeshProUGUI warningText;
-    [SerializeField] private TextMeshProUGUI gameOverText;
-    [SerializeField] private CanvasGroup gameOverCanvasGroup;
+
+    [Header("ゲーム終了演出（Image方式）")]
+    [SerializeField] private Image finishImage;              // ← "FINISH" イラスト画像
+    [SerializeField] private CanvasGroup finishCanvasGroup;  // ← 透過制御用
 
     /// <summary>
-    /// タイムアップなどの表示をアニメーション付きで表示
+    /// タイムアップ時にFINISH画像をアニメ付きで表示
     /// </summary>
-    public void ShowGameOverText(string message)
+    public void ShowFinishImage()
     {
-        gameOverText.text = message;
-        gameOverCanvasGroup.alpha = 0f;
-        gameOverCanvasGroup.gameObject.SetActive(true);
+        if (finishImage == null || finishCanvasGroup == null)
+        {
+            Debug.LogWarning("Finish用のImageまたはCanvasGroupが設定されていません。");
+            return;
+        }
 
-        // フェードイン + スケールポップ演出（同時）
-        gameOverCanvasGroup.DOFade(1f, 0.6f).SetEase(Ease.OutSine);
-        gameOverText.rectTransform.localScale = Vector3.zero;
-        gameOverText.rectTransform.DOScale(1f, 0.6f).SetEase(Ease.OutBack);
+        finishCanvasGroup.alpha = 0f;
+        finishCanvasGroup.gameObject.SetActive(true);
+
+        finishCanvasGroup.DOFade(1f, 0.6f).SetEase(Ease.OutSine);
+        finishImage.rectTransform.localScale = Vector3.zero;
+        finishImage.rectTransform.DOScale(1f, 0.6f).SetEase(Ease.OutBack);
     }
 
     public void UpdateTarget(int target)
@@ -44,7 +52,7 @@ public class GameUIController : MonoBehaviour
     }
 
     /// <summary>
-    /// ワーニングメッセージをフェード表示
+    /// 警告メッセージをアニメ表示
     /// </summary>
     public void ShowWarning(string message, float duration = 1.0f)
     {
@@ -52,15 +60,10 @@ public class GameUIController : MonoBehaviour
         warningText.alpha = 0f;
         warningText.gameObject.SetActive(true);
 
-        // フェードイン → 一定時間 → フェードアウト
         Sequence seq = DOTween.Sequence();
         seq.Append(warningText.DOFade(1f, 0.3f))
            .AppendInterval(duration)
            .Append(warningText.DOFade(0f, 0.5f))
            .OnComplete(() => warningText.gameObject.SetActive(false));
     }
-
-  
-    
-
 }

@@ -22,7 +22,7 @@ public class FinishSceneManager : MonoBehaviour
     private int highScore;
     [SerializeField] private TextMeshProUGUI highScoreText;
     [SerializeField] private GameObject newRecordBanner; // "New Record!" 表示用（ImageやText）
-
+    [SerializeField] private TextMeshProUGUI rankingText;
 
 
     void Start()
@@ -55,6 +55,7 @@ public class FinishSceneManager : MonoBehaviour
         StartCoroutine(CountUpScore());
         // スコア登録
         ScoreRanking.RegisterScore(finalScore);
+        ShowRanking();
     }
 
 
@@ -90,5 +91,16 @@ public class FinishSceneManager : MonoBehaviour
     public void OnTitle()
     {
         fader.FadeOutAndLoadScene("TitleScene", 1f);
+    }
+
+    void ShowRanking()
+    {
+        var scores = ScoreRanking.LoadScores();
+        rankingText.text = "ランキング\n";
+
+        for (int i = 0; i < scores.Count; i++)
+        {
+            rankingText.text += $"{i + 1}. {scores[i]} 問\n";
+        }
     }
 }
