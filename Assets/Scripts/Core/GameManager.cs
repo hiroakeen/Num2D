@@ -23,6 +23,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private PieceSpawner pieceSpawner;           // ピース生成制御
     [SerializeField] private GameUIController uiController;       // UI全般制御（タイマーやゲームオーバー表示）
 
+    [Header("フェードアウト")]
+    [SerializeField] private UIFader uiFader;
+
     private float remainingTime;
     private int score;
     private bool isGameRunning = true;
@@ -119,8 +122,11 @@ public class GameManager : MonoBehaviour
     private IEnumerator GoToFinishSceneAfterDelay()
     {
         yield return new WaitForSeconds(2f);
-        PlayerPrefs.SetInt("LastScore", score);  // スコア保存
-        PlayerPrefs.Save();                      // 明示的に保存
-        SceneManager.LoadScene("FinishScene");
+
+        PlayerPrefs.SetInt("LastScore", score);
+        PlayerPrefs.Save();
+
+        uiFader?.FadeOutAndLoadScene("FinishScene", 1f);  // ← フェードアウトで遷移
     }
+
 }

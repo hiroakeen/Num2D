@@ -11,13 +11,23 @@ public class GameUIController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI currentSumText;
     [SerializeField] private TextMeshProUGUI warningText;
     [SerializeField] private TextMeshProUGUI gameOverText;
+    [SerializeField] private CanvasGroup gameOverCanvasGroup;
 
-
+    /// <summary>
+    /// タイムアップなどの表示をアニメーション付きで表示
+    /// </summary>
     public void ShowGameOverText(string message)
     {
         gameOverText.text = message;
-        gameOverText.gameObject.SetActive(true);
+        gameOverCanvasGroup.alpha = 0f;
+        gameOverCanvasGroup.gameObject.SetActive(true);
+
+        // フェードイン + スケールポップ演出（同時）
+        gameOverCanvasGroup.DOFade(1f, 0.6f).SetEase(Ease.OutSine);
+        gameOverText.rectTransform.localScale = Vector3.zero;
+        gameOverText.rectTransform.DOScale(1f, 0.6f).SetEase(Ease.OutBack);
     }
+
     public void UpdateTarget(int target)
     {
         targetText.text = $"{target}";
