@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour
 
     private float remainingTime;
     private int score;
-    private bool isGameRunning = true;
+    private bool isGameRunning = false;
 
     public int Score => score;
 
