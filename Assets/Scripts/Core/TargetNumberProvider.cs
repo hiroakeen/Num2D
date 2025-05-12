@@ -9,6 +9,11 @@ public class TargetNumberProvider : MonoBehaviour
 
     [SerializeField] private GameUIController uiController;
 
+
+    private void Start()
+    {
+        GenerateNewTarget(0);
+    }
     /// <summary>
     /// スコアに応じたターゲット値をランダムに生成
     /// </summary>
