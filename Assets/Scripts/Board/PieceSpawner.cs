@@ -38,7 +38,7 @@ public class PieceSpawner : MonoBehaviour
 
     void SpawnPiece()
     {
-        float spawnY = spawnHeightPoint != null ? spawnHeightPoint.position.y : 5f;
+        float spawnY = spawnHeightPoint != null ? spawnHeightPoint.position.y : 4.5f;
         float spawnX = Random.Range(-spawnXRange, spawnXRange);
 
         Vector3 spawnPos = new Vector3(spawnX, spawnY, 0f);

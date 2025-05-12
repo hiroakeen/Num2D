@@ -16,7 +16,7 @@ public class GameUIController : MonoBehaviour
 
     public void UpdateCurrentSum(int sum)
     {
-        currentSumText.text = $"いま: {sum}";
+        currentSumText.text = $"{sum}";
     }
 
     public void ClearCurrentSum()

@@ -60,13 +60,13 @@ public class GameManager : MonoBehaviour
     private void UpdateScoreUI()
     {
         if (scoreText != null)
-            scoreText.text = $"Score: {score}";
+            scoreText.text = $"{score}問";
     }
 
     private void UpdateTimerUI()
     {
         if (timerText != null)
-            timerText.text = $"Time: {remainingTime:F1}s";
+            timerText.text = $"{remainingTime:F0}";
     }
 
     private void EndGame()
