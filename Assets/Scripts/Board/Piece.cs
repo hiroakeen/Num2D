@@ -85,6 +85,10 @@ public class Piece : MonoBehaviour
         transform.DOScale(originalScale * enlargeFactor, 0.08f)
             .OnComplete(() => transform.DOScale(originalScale, 0.08f));
     }
-
+    public void AnimateShake()
+    {
+        transform.DOKill(); // ëºÉAÉjÉÅí‚é~
+        transform.DOShakeScale(0.3f, 0.2f, 8, 90, false);
+    }
 
 }

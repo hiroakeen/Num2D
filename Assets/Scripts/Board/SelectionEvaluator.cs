@@ -9,6 +9,8 @@ public class SelectionEvaluator : MonoBehaviour
 {
     [SerializeField] private TargetNumberProvider targetProvider;
     [SerializeField] private GameUIController uiController;
+    [SerializeField] private GameObject redCirclePrefab;
+
 
     public void EvaluateSelection(List<Piece> selectedPieces)
     {
@@ -20,12 +22,15 @@ public class SelectionEvaluator : MonoBehaviour
             sum += piece.Number;
         }
 
-        if (sum == targetProvider.TargetNumber)
+        if (sum == targetProvider.TargetNumber && selectedPieces.Count >= 3)
         {
-            // 成功：ピース消去、スコア加算、ターゲット更新
             foreach (var piece in selectedPieces)
             {
                 piece.AnimateDestroy();
+                // 赤丸演出追加
+                var circleObj = Instantiate(redCirclePrefab); 
+                var drawer = circleObj.GetComponent<RedCircleDrawer>();
+                drawer.DrawCircle(piece.transform.position);
             }
 
             GameManager.Instance?.AddScore(1);
@@ -33,8 +38,16 @@ public class SelectionEvaluator : MonoBehaviour
         }
         else
         {
-            Debug.Log("❌ 合計が一致しません");
+            // 失敗時
+            foreach (var piece in selectedPieces)
+            {
+                piece.AnimateShake(); // 震える
+
+            }
+
+            uiController?.ShowWarning("3つ いじょう\\nなぞってください");
         }
+
 
         uiController?.ClearCurrentSum();
     }
