@@ -21,7 +21,6 @@ public class FinishSceneManager : MonoBehaviour
     private int finalScore;
     private int highScore;
     [SerializeField] private GameObject newRecordBanner; // "New Record!" 表示用
-    [SerializeField] private TextMeshProUGUI rankingText;
     [SerializeField] private TextMeshProUGUI[] rankTexts;
     [SerializeField] private TextMeshProUGUI scoreText;       // 通常スコア表示
     [SerializeField] private TextMeshProUGUI highScoreText;   // ランキング入り用表示
@@ -47,8 +46,22 @@ public class FinishSceneManager : MonoBehaviour
             highScore = finalScore;
             PlayerPrefs.SetInt("HighScore", highScore);
             PlayerPrefs.Save();
-            newRecordBanner.SetActive(true); // ← New Record表示！
+
+            newRecordBanner.SetActive(true); // 表示！
+
+            // フェード演出追加
+            CanvasGroup cg = newRecordBanner.GetComponent<CanvasGroup>();
+            if (cg == null) cg = newRecordBanner.AddComponent<CanvasGroup>();
+
+            cg.alpha = 1f;
+
+            // 2秒待ってからフェードアウト
+            DOTween.Sequence()
+                .AppendInterval(2f)
+                .Append(cg.DOFade(0f, 1f).SetEase(Ease.OutQuad))
+                .OnComplete(() => newRecordBanner.SetActive(false));
         }
+
 
         // スコア登録
         ScoreRanking.RegisterScore(finalScore);
@@ -87,13 +100,20 @@ public class FinishSceneManager : MonoBehaviour
 
         while (current <= finalScore)
         {
-            scoreText.text = $"正解数{current} 問";
+            // アクティブな方にだけ書き込む！
+            if (scoreText.gameObject.activeSelf)
+                scoreText.text = $"正解数{current}問";
+
+            if (highScoreText.gameObject.activeSelf)
+                highScoreText.text = $"ランキング入り{current} 問";
+
             current++;
             yield return new WaitForSeconds(countDelay);
         }
 
-        // ハイスコア表示
-        highScoreText.text = $"最高記録{highScore} 問";
+        // ハイスコア表示（任意）
+        if (highScoreText.gameObject.activeSelf)
+            highScoreText.text = $"最高記録{highScore}問";
 
         yield return new WaitForSeconds(0.5f);
 
@@ -118,16 +138,24 @@ public class FinishSceneManager : MonoBehaviour
     {
         for (int i = 0; i < rankTexts.Length; i++)
         {
+            if (i < scores.Count)
+                rankTexts[i].text = $"{scores[i]}問";
+            else
+                rankTexts[i].text = "- - -";
+
+            // 表示スタイルを最後に適用
             if (i == 0)
             {
-                rankTexts[i].color = Color.red;
+                rankTexts[i].color = Color.magenta;
                 rankTexts[i].fontSize = 70;
             }
-
-            if (i < scores.Count)
-                rankTexts[i].text = $"{scores[i]} 問";
             else
-                rankTexts[i].text = $"- - -";
+            {
+                // 他の順位のスタイルも一応設定しておく
+                rankTexts[i].color = Color.magenta;
+                rankTexts[i].fontSize = 60;
+            }
         }
     }
+
 }
