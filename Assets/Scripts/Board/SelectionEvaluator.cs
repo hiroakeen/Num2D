@@ -22,13 +22,34 @@ public class SelectionEvaluator : MonoBehaviour
             sum += piece.Number;
         }
 
-        if (sum == targetProvider.TargetNumber && selectedPieces.Count >= 3)
+        int target = targetProvider.TargetNumber;
+
+        if (selectedPieces.Count < 3)
         {
+            // 少なすぎる → 揺らす＋メッセージ
+            foreach (var piece in selectedPieces)
+            {
+                piece.AnimateShake();
+            }
+            uiController?.ShowWarning("3つ いじょう\nなぞってください");
+        }
+        else if (sum != target)
+        {
+            // 合計が違う → 揺らすのみ（コメントなし）
+            foreach (var piece in selectedPieces)
+            {
+                piece.AnimateShake();
+            }
+        }
+        else
+        {
+            // 正解
             foreach (var piece in selectedPieces)
             {
                 piece.AnimateDestroy();
-                // 赤丸演出追加
-                var circleObj = Instantiate(redCirclePrefab); 
+
+                // 赤丸演出
+                var circleObj = Instantiate(redCirclePrefab);
                 var drawer = circleObj.GetComponent<RedCircleDrawer>();
                 drawer.DrawCircle(piece.transform.position);
             }
@@ -36,19 +57,8 @@ public class SelectionEvaluator : MonoBehaviour
             GameManager.Instance?.AddScore(1);
             targetProvider.GenerateNewTarget(GameManager.Instance.Score);
         }
-        else
-        {
-            // 失敗時
-            foreach (var piece in selectedPieces)
-            {
-                piece.AnimateShake(); // 震える
-
-            }
-
-            uiController?.ShowWarning("3つ いじょう\\nなぞってください");
-        }
-
 
         uiController?.ClearCurrentSum();
     }
+
 }
