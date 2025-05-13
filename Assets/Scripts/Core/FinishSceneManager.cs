@@ -61,13 +61,13 @@ public class FinishSceneManager : MonoBehaviour
         if (isRanked)
         {
             highScoreText.gameObject.SetActive(true);
-            highScoreText.text = $"ランキング入り！ {finalScore} 問";
+            highScoreText.text = $"ランキング入り{finalScore} 問";
             scoreText.gameObject.SetActive(false);
         }
         else
         {
             scoreText.gameObject.SetActive(true);
-            scoreText.text = $"正解数：{finalScore} 問";
+            scoreText.text = $"正解数{finalScore} 問";
             highScoreText.gameObject.SetActive(false);
         }
 
@@ -87,13 +87,13 @@ public class FinishSceneManager : MonoBehaviour
 
         while (current <= finalScore)
         {
-            scoreText.text = $"正解数：{current} 問";
+            scoreText.text = $"正解数{current} 問";
             current++;
             yield return new WaitForSeconds(countDelay);
         }
 
         // ハイスコア表示
-        highScoreText.text = $"最高記録：{highScore} 問";
+        highScoreText.text = $"最高記録{highScore} 問";
 
         yield return new WaitForSeconds(0.5f);
 
@@ -120,14 +120,14 @@ public class FinishSceneManager : MonoBehaviour
         {
             if (i == 0)
             {
-                rankTexts[i].color = Color.yellow;
-                rankTexts[i].fontSize = 42;
+                rankTexts[i].color = Color.red;
+                rankTexts[i].fontSize = 70;
             }
 
             if (i < scores.Count)
-                rankTexts[i].text = $"{i + 1}. {scores[i]} 問";
+                rankTexts[i].text = $"{scores[i]} 問";
             else
-                rankTexts[i].text = $"{i + 1}. ---";
+                rankTexts[i].text = $"- - -";
         }
     }
 }

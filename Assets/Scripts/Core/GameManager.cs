@@ -40,6 +40,9 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator Start()
     {
+
+        uiFader?.FadeIn(1f);
+
         // ゲーム開始前のカウントダウン演出
         yield return StartCoroutine(countdownUI.PlayCountdown());
 

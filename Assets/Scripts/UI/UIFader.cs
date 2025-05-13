@@ -9,12 +9,20 @@ public class UIFader : MonoBehaviour
     /// <summary>
     /// フェードアウト後に指定したシーンへ遷移
     /// </summary>
+    public void FadeOut(float duration = 1f, TweenCallback onComplete = null)
+    {
+        canvasGroup.DOFade(1f, duration)
+            .SetEase(Ease.InOutQuad)
+            .OnComplete(onComplete);
+    }
+
     public void FadeOutAndLoadScene(string sceneName, float duration = 1f)
     {
         canvasGroup.DOFade(1f, duration)
             .SetEase(Ease.InOutQuad)
             .OnComplete(() => SceneManager.LoadScene(sceneName));
     }
+
     public void FadeIn(float duration = 1f)
     {
         canvasGroup.alpha = 1f;
