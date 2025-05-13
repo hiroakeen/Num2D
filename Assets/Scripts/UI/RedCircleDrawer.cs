@@ -9,11 +9,9 @@ using DG.Tweening;
 public class RedCircleDrawer : MonoBehaviour
 {
     [Header("円の形状")]
-    [SerializeField] private float radius = 0.7f;            // 円の半径（ピースのサイズに合わせて調整）
-    [SerializeField] private int segments = 60;              // 円の分割数（多いほど滑らか）
-
-    [Header("描画タイミング")]
-    [SerializeField] private float drawDuration = 0.15f;     // 一筆書きの速度（0.15秒で1周）
+    [SerializeField] private float radius = 0.7f;
+    [SerializeField] private float drawDuration = 0.05f;
+    [SerializeField] private int segments = 30;
 
     [Header("消えるタイミング")]
     [SerializeField] private float fadeDelay = 0.2f;         // 描いた後どれくらい表示するか
@@ -57,26 +55,18 @@ public class RedCircleDrawer : MonoBehaviour
     /// </summary>
     private IEnumerator DrawCircleCoroutine(Vector3 center)
     {
-        line.positionCount = 0;
+        line.positionCount = segments + 1;
 
         for (int i = 0; i <= segments; i++)
         {
             float t = i / (float)segments;
-
-            // 円周の角度（時計回り）
-            float angle = -t * Mathf.PI * 2f - Mathf.PI / 2f;
-
-            // 円周上の座標にランダムな揺らぎ（手書き感）
+            float angle = -t * Mathf.PI * 2f;
             Vector3 offset = new Vector3(Mathf.Cos(angle), Mathf.Sin(angle), 0) * radius;
-            Vector3 jitter = Random.insideUnitCircle * 0.015f;
-            Vector3 point = center + offset + (Vector3)jitter;
-
-            line.positionCount = i + 1;
+            Vector3 point = center + offset;
             line.SetPosition(i, point);
-
-            // 一筆描き：1頂点ずつ描画していく
-            yield return new WaitForSeconds(drawDuration / segments);
         }
+
+        yield return new WaitForSeconds(0.1f);
 
         // 描き終わったら円を閉じる
         line.loop = true;
