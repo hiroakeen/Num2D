@@ -9,7 +9,7 @@ public class PieceInputHandler : MonoBehaviour
     [SerializeField] private Camera mainCamera;
     [SerializeField] private SelectionEvaluator evaluator;
     [SerializeField] private GameUIController uiController;
-    [SerializeField] private LineDrawer lineDrawer; // Å© í«â¡
+    [SerializeField] private LineDrawer lineDrawer;
 
     private List<Piece> selectedPieces = new List<Piece>();
     private bool isDragging = false;
