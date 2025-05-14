@@ -56,6 +56,8 @@ public class Piece : MonoBehaviour
 
     public void AnimateDestroy(float duration = 0.2f)
     {
+        SEManager.PlaySuccess(); //³‰ğ‚Ì‰¹
+
         transform.DOScale(Vector3.zero, duration)
                  .SetEase(Ease.InBack)
                  .OnComplete(() => Destroy(gameObject));
@@ -84,11 +86,15 @@ public class Piece : MonoBehaviour
         transform.DOKill(); // “r’†‚Å‘I‚Ñ’¼‚µ‚Ä‚à’†’f
         transform.DOScale(originalScale * enlargeFactor, 0.08f)
             .OnComplete(() => transform.DOScale(originalScale, 0.08f));
+
+        SEManager.PlayTouch(); //G‚ê‚½‚Æ‚«‚Ì‰¹
     }
     public void AnimateShake()
     {
         transform.DOKill(); // ‘¼ƒAƒjƒ’â~
         transform.DOShakeScale(0.3f, 0.2f, 8, 90, false);
+
+        SEManager.PlayMiss(); //ƒ~ƒX‚Ì‰¹
     }
 
 }

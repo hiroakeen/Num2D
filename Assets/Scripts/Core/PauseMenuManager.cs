@@ -17,6 +17,7 @@ public class PauseMenuManager : MonoBehaviour
 
     public void OnPauseButtonPressed()
     {
+        SEManager.PlayClick(); //ボタン音
         isPaused = true;
         Time.timeScale = 0f; // ゲーム停止
         pauseMenuPanel.SetActive(true);
@@ -27,6 +28,7 @@ public class PauseMenuManager : MonoBehaviour
 
     public void OnResumeButtonPressed()
     {
+        SEManager.PlayClick(); //ボタン音
         isPaused = false;
         Time.timeScale = 1f;
         pauseMenuPanel.SetActive(false);
@@ -34,6 +36,7 @@ public class PauseMenuManager : MonoBehaviour
 
     public void OnQuitButtonPressed()
     {
+        SEManager.PlayClick(); //ボタン音
         Time.timeScale = 1f; // 念のため再開
         SceneManager.LoadScene("TitleScene");
     }

@@ -49,6 +49,8 @@ public class FinishSceneManager : MonoBehaviour
 
             newRecordBanner.SetActive(true); // 表示！
 
+            SEManager.PlayNewRecord(); //新記録の音
+
             // フェード演出追加
             CanvasGroup cg = newRecordBanner.GetComponent<CanvasGroup>();
             if (cg == null) cg = newRecordBanner.AddComponent<CanvasGroup>();
@@ -76,6 +78,8 @@ public class FinishSceneManager : MonoBehaviour
             highScoreText.gameObject.SetActive(true);
             highScoreText.text = $"ランキング入り{finalScore} 問";
             scoreText.gameObject.SetActive(false);
+
+            SEManager.PlayRankIn(); //ランク入りの音
         }
         else
         {
@@ -126,11 +130,13 @@ public class FinishSceneManager : MonoBehaviour
 
     public void OnRetry()
     {
+        SEManager.PlayClick(); //ボタン音
         fader.FadeOutAndLoadScene("MainScene", 1f);
     }
 
     public void OnTitle()
     {
+        SEManager.PlayClick(); //ボタン音
         fader.FadeOutAndLoadScene("TitleScene", 1f);
     }
 
