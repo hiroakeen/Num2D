@@ -3,8 +3,10 @@
 ## ゲーム説明
 - 2D知育パズル
 - 指定された数値と合計値が同じになるように、３つ以上のピースをなぞって足していく
-- 以下のUnityPlayでプレイできます。
-https://play.unity.com/en/games/a784c65c-0edf-4176-b58c-7cbb879e0d00/webgl-builds
+- Unityroomでプレイできます。ランキング対応済み、スマホ可。
+  - https://unityroom.com/games/totalmates
+- UnityPlayでもプレイできます。
+  - https://play.unity.com/en/games/a784c65c-0edf-4176-b58c-7cbb879e0d00/webgl-builds
 ## 独自性
 - 子供でもプレイしやすいように暖かいデザインにした
 - DoTweenも全体的にかわいらしい動きを採用
