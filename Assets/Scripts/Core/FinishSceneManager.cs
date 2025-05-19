@@ -5,6 +5,7 @@ using DG.Tweening;
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
+using unityroom.Api;
 
 public class FinishSceneManager : MonoBehaviour
 {
@@ -46,7 +47,8 @@ public class FinishSceneManager : MonoBehaviour
             highScore = finalScore;
             PlayerPrefs.SetInt("HighScore", highScore);
             PlayerPrefs.Save();
-
+            // UnityroomのボードNo1にスコア123.45fを送信する。
+            UnityroomApiClient.Instance.SendScore(1, highScore, ScoreboardWriteMode.HighScoreDesc);
             newRecordBanner.SetActive(true); // 表示！
 
             SEManager.PlayNewRecord(); //新記録の音
@@ -115,7 +117,7 @@ public class FinishSceneManager : MonoBehaviour
             yield return new WaitForSeconds(countDelay);
         }
 
-        // ハイスコア表示（任意）
+        // ハイスコア表示
         if (highScoreText.gameObject.activeSelf)
             highScoreText.text = $"最高記録{highScore}問";
 
