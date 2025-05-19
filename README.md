@@ -7,7 +7,7 @@
   - https://unityroom.com/games/totalmates
 - UnityPlayでもプレイできます。
   - https://play.unity.com/en/games/a784c65c-0edf-4176-b58c-7cbb879e0d00/webgl-builds
-## 独自性
+## こだわったこと
 - 子供でもプレイしやすいように暖かいデザインにした
 - DoTweenも全体的にかわいらしい動きを採用
 - １分の集中で疲れにくく、繰り返しプレイできるようにした。ハイスコア機能も実装
