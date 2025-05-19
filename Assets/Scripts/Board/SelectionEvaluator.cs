@@ -35,7 +35,7 @@ public class SelectionEvaluator : MonoBehaviour
         }
         else if (sum != target)
         {
-            // 合計が違う → 揺らすのみ（コメントなし）
+            // 合計が違う → 揺らすだけ
             foreach (var piece in selectedPieces)
             {
                 piece.AnimateShake();

@@ -91,7 +91,7 @@ public class Piece : MonoBehaviour
     }
     public void AnimateShake()
     {
-        transform.DOKill(); // 他アニメ停止
+        transform.DOKill(); // 他アニメ停止させてからシェイク
         transform.DOShakeScale(0.3f, 0.2f, 8, 90, false);
 
         SEManager.PlayMiss(); //ミスの音
